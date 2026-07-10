@@ -40,8 +40,15 @@ app.post('/api/analyze', async (req, res) => {
       aggregate,
     });
   } catch (err) {
-    console.error('Analysis failed:', err);
-    res.status(500).json({ error: 'Analysis failed. Please try again.' });
+  console.error('Analysis failed:', err);
+
+  if (err.status === 429 || err.message?.includes('rate_limit')) {
+    return res.status(429).json({
+      error: 'The AI service is temporarily busy handling requests. Please wait about a minute and try again.',
+    });
+  }
+
+  res.status(500).json({ error: 'Analysis failed. Please try again.' });
   }
 });
 

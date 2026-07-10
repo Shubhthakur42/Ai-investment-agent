@@ -1,0 +1,93 @@
+/* frontend/src/components/DebatePanel.css */
+.debate-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.debate-panel.bull {
+  border-top: 3px solid var(--bull);
+}
+
+.debate-panel.bear {
+  border-top: 3px solid var(--bear);
+}
+
+.debate-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.9rem;
+}
+
+.debate-panel.bull .debate-panel-header { color: var(--bull); }
+.debate-panel.bear .debate-panel-header { color: var(--bear); }
+
+.debate-panel-tag {
+  font-size: 0.75rem;
+}
+
+.debate-thesis {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+  text-transform: none;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.debate-factors {
+  margin: 0 0 1rem;
+  padding-left: 1.1rem;
+  font-size: 0.87rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.debate-factors li {
+  margin-bottom: 0.4rem;
+}
+
+.debate-closing {
+  border-top: 1px solid var(--border);
+  padding-top: 0.8rem;
+  font-size: 0.85rem;
+}
+
+.debate-closing-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.debate-closing p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.unverified-badge {
+  margin-left: auto;
+  background: rgba(212, 162, 76, 0.15);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 600;
+  cursor: help;
+}

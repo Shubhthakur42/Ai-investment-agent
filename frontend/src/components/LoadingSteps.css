@@ -1,0 +1,44 @@
+/* frontend/src/components/LoadingSteps.css */
+.loading-steps {
+  max-width: 360px;
+  margin: 2.5rem auto 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.loading-step {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  color: var(--text-muted);
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.loading-step.active {
+  opacity: 1;
+  color: var(--gold);
+}
+
+.loading-step.done {
+  opacity: 0.7;
+  color: var(--bull);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.loading-step.active .dot {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}

@@ -1,0 +1,56 @@
+/* frontend/src/components/RunsExplorer.css */
+.runs-explorer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.runs-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.runs-toggle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.runs-content {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.runs-tabs {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.run-tab {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.run-tab.active.invest {
+  border-color: var(--bull);
+  color: var(--bull);
+}
+
+.run-tab.active.pass {
+  border-color: var(--bear);
+  color: var(--bear);
+}

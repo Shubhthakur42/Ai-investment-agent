@@ -1,0 +1,24 @@
+/* frontend/src/App.css */
+.app-error {
+  text-align: center;
+  color: var(--bear);
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.results {
+  margin-top: 1rem;
+}
+
+.debate-row {
+  display: flex;
+  gap: 1.25rem;
+  align-items: stretch;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 680px) {
+  .debate-row {
+    flex-direction: column;
+  }
+}

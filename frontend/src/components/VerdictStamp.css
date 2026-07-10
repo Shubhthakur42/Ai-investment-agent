@@ -1,0 +1,58 @@
+/* frontend/src/components/VerdictStamp.css */
+.verdict-block {
+  text-align: center;
+  margin: 2.5rem 0 2rem;
+}
+
+.verdict-stamp {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  border: 3px solid var(--gold);
+  border-radius: 10px;
+  padding: 0.9rem 2.2rem;
+  transform: rotate(-3deg);
+  font-family: var(--font-mono);
+}
+
+.verdict-stamp.invest {
+  border-color: var(--bull);
+}
+
+.verdict-stamp.pass {
+  border-color: var(--bear);
+}
+
+.verdict-decision {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.verdict-stamp.invest .verdict-decision { color: var(--bull); }
+.verdict-stamp.pass .verdict-decision { color: var(--bear); }
+
+.verdict-confidence {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.verdict-consistency {
+  margin-top: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.consistency-value {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.consistency-detail {
+  display: block;
+  font-size: 0.78rem;
+  margin-top: 0.2rem;
+  opacity: 0.8;
+}

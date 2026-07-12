@@ -5,6 +5,7 @@ const cors = require('cors');
 const { researcherNode } = require('./agent/nodes/researcher');
 const { buildDebateGraph } = require('./agent/debateGraph');
 const { aggregateVerdicts } = require('./utils/aggregateVerdicts');
+const { saveAnalysis, getHistory } = require('./db');
 
 const app = express();
 app.use(cors({
@@ -35,6 +36,14 @@ app.post('/api/analyze', async (req, res) => {
     const verdicts = runs.map((r) => r.verdict);
     const aggregate = aggregateVerdicts(verdicts);
 
+    // Save this analysis to history (non-blocking failure — won't break the response)
+    await saveAnalysis({
+      companyName: companyName.trim(),
+      decision: aggregate.majorityDecision,
+      avgConfidence: aggregate.avgConfidence,
+      consistency: aggregate.consistency,
+    });
+
     res.json({
       companyName: companyName.trim(),
       companyData: researched.companyData,
@@ -42,15 +51,25 @@ app.post('/api/analyze', async (req, res) => {
       aggregate,
     });
   } catch (err) {
-  console.error('Analysis failed:', err);
+    console.error('Analysis failed:', err);
 
-  if (err.status === 429 || err.message?.includes('rate_limit')) {
-    return res.status(429).json({
-      error: 'The AI service is temporarily busy handling requests. Please wait about a minute and try again.',
-    });
+    if (err.status === 429 || err.message?.includes('rate_limit')) {
+      return res.status(429).json({
+        error: 'The AI service is temporarily busy handling requests. Please wait about a minute and try again.',
+      });
+    }
+
+    res.status(500).json({ error: 'Analysis failed. Please try again.' });
   }
+});
 
-  res.status(500).json({ error: 'Analysis failed. Please try again.' });
+app.get('/api/history', async (req, res) => {
+  try {
+    const history = await getHistory();
+    res.json(history);
+  } catch (err) {
+    console.error('Failed to fetch history:', err);
+    res.status(500).json({ error: 'Failed to fetch history.' });
   }
 });
 

@@ -7,6 +7,7 @@ import LoadingSteps from './components/LoadingSteps';
 import VerdictStamp from './components/VerdictStamp';
 import RunsExplorer from './components/RunsExplorer';
 import HowItWorks from './components/HowItWorks';
+import RecentHistory from './components/RecentHistory';
 import './App.css';
 
 function App() {
@@ -24,8 +25,8 @@ function App() {
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/analyze`, {
-      companyName: companyName.trim(),
-});
+        companyName: companyName.trim(),
+      });
       setResult(response.data);
     } catch (err) {
       setError(
@@ -65,6 +66,8 @@ function App() {
             <RunsExplorer runs={result.runs} />
           </div>
         )}
+
+        <RecentHistory refreshKey={result} />
       </div>
     </>
   );

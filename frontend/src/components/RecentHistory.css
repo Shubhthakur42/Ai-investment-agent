@@ -1,0 +1,66 @@
+/* frontend/src/components/RecentHistory.css */
+.recent-history {
+  margin-top: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recent-history-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+
+.recent-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.history-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  font-size: 0.82rem;
+}
+
+.history-company {
+  flex: 1;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.history-decision {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+
+.history-decision.invest {
+  color: var(--bull);
+  background: var(--bull-bg);
+}
+
+.history-decision.pass {
+  color: var(--bear);
+  background: var(--bear-bg);
+}
+
+.history-confidence,
+.history-consistency {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
